@@ -18,7 +18,7 @@ public class Gui extends JFrame{
   boton1.addActionListener(new VentanaAC(areaTexto1));
   //config
   this.setVisible(true);
-  this.setBounds(0,0,300,300);
+  this.setBounds(0,0,600,400);
   this.setLocationRelativeTo(null);
   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  }
