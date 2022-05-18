@@ -1,0 +1,4 @@
+Manifest-Version: 0.2
+Created-By: favoxv
+Main-Class: Gui
+X-COMMENT: Motor de interfaz grafica
