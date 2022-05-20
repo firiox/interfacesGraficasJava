@@ -1,9 +1,11 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 public class Gui extends JFrame{
  JButton boton1;
  JTextArea areaTexto1;
+ JTextField nombre;
  public Gui(){
   setLayout(null);
   //Ventanas
@@ -14,8 +16,11 @@ public class Gui extends JFrame{
   areaTexto1.setBounds(20,90,250,200);
   add(areaTexto1);
   areaTexto1.setEditable(false);  
+  nombre = new JTextField();
+  nombre.setBounds(200,40,100,22);
+  add(nombre);
   //Eventos
-  boton1.addActionListener(new VentanaAC(areaTexto1));
+  boton1.addActionListener(new VentanaAC(areaTexto1,nombre));
   //config
   this.setVisible(true);
   this.setBounds(0,0,600,400);

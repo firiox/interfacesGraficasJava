@@ -1,17 +1,25 @@
 import java.awt.event.*;
 import javax.swing.JTextArea;
 import java.lang.String;
+import javax.swing.JTextField;
 public class VentanaAC implements ActionListener{
  JTextArea ventana; //Donde se va a mostrar
+ JTextField nombre; //Donde pone el nombre de la clase
  public void actionPerformed(ActionEvent e){
   //Codigo  
-  crearClase();
+  if(nombre.getText().strip().equals("")){
+   crearClase();
+  }
+  else{
+   String n = nombre.getText().strip();
+   crearClase(n);
+  }
   //claseMain(); //crear checkbox
   
  }
- public VentanaAC(JTextArea t){
-  //Codigo
-  ventana = t;
+ public VentanaAC(JTextArea ta, JTextField tf){
+  ventana = ta;
+  nombre = tf;
  }
  private void crearClase(String nombre){
   ventana.setText("public class "+nombre+" extends JFrame{"
