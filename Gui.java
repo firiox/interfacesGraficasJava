@@ -1,3 +1,6 @@
+/**
+* Gui de VentanaAC
+*/
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
