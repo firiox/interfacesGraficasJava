@@ -2,24 +2,30 @@ import java.awt.event.*;
 import javax.swing.JTextArea;
 import java.lang.String;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 public class VentanaAC implements ActionListener{
  JTextArea ventana; //Donde se va a mostrar
  JTextField nombre; //Donde pone el nombre de la clase
+ JCheckBox isMain; //verifica si tiene clase main
  public void actionPerformed(ActionEvent e){
-  //Codigo  
   if(nombre.getText().strip().equals("")){
    crearClase();
+   if(isMain.isSelected()){
+    claseMain();
+   }
   }
   else{
    String n = nombre.getText().strip();
    crearClase(n);
-  }
-  //claseMain(); //crear checkbox
-  
+   if(isMain.isSelected()){
+    claseMain();
+   }
+  }    
  }
- public VentanaAC(JTextArea ta, JTextField tf){
+ public VentanaAC(JTextArea ta, JTextField tf, JCheckBox cb){
   ventana = ta;
   nombre = tf;
+  isMain = cb;
  }
  private void crearClase(String nombre){
   ventana.setText("public class "+nombre+" extends JFrame{"
