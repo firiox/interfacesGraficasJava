@@ -6,14 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
 public class Gui2 extends JFrame{
  JTextField versionTF, autorTF, claseMainTF;
  JLabel versionL, autorL, claseMainL;
  JTextArea comentario;
+ JButton crear;
  private void crearTextField(JTextField ts[],int margenX,int margenY,int fieldSize,int regla,int fontSize){
   int i=0;
   for(JTextField t :ts){
-   t = new JTextField();
+   //t = new JTextField();//BUG!
    t.setBounds(margenX+((regla+46)*i),margenY+fontSize+6,regla,fieldSize);
    add(t);
    i++;
@@ -53,6 +55,10 @@ public class Gui2 extends JFrame{
   JLabel ls[] = {versionL,autorL,claseMainL};  
   JTextField ts[] = {versionTF,autorTF,claseMainTF};  
   crearCampo(ls,ts,margenX,margenY,fontSize,fieldSize,regla);
+  crear = new JButton("Crear");
+  crear.setBounds(margenX,margenY+fontSize+6+fieldSize+6*3+(9*3)+(4*3)+6*3,regla,fieldSize);
+  add(crear);
+  crear.addActionListener(new ManifestAC(versionTF,autorTF,claseMainTF,comentario)); //no esta funcionando
   //config
   setDefaultCloseOperation(EXIT_ON_CLOSE);
   setVisible(true);
