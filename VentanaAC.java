@@ -10,6 +10,7 @@ public class VentanaAC implements ActionListener{
  public void actionPerformed(ActionEvent e){
   if(nombre.getText().strip().equals("")){
    crearClase();
+   startConfig();
    if(isMain.isSelected()){
     claseMain();
    }
@@ -17,6 +18,7 @@ public class VentanaAC implements ActionListener{
   else{
    String n = nombre.getText().strip();
    crearClase(n);
+   startConfig();
    if(isMain.isSelected()){
     claseMain();
    }
@@ -39,6 +41,46 @@ public class VentanaAC implements ActionListener{
  private void crearClase(){
   crearClase("Ventana");
  }
+ private void startConfig(){
+  String t = ventana.getText();
+  if(t.equals("")){
+   System.out.println("Error");
+  }
+  else{
+   int l = t.length();
+   Boolean constructor=false;
+   Boolean dentro = false;
+   for(int i=0;i<l;i++){
+    if(!constructor){     
+     if(t.substring(i,i+13).equals("//Constructor")){
+      constructor = true;
+     }
+    }
+    else{
+     
+     if(!dentro){
+      if(t.charAt(i) == '{'){
+       dentro = true;
+      }
+     }   
+     else{
+      String s1 = t.substring(0,i);
+      String s2 = t.substring(i+1,l);
+      String add =
+       ""//"\n  setBounds(0,0,600,400)"
+       +"\n  setLocationRelativeTo(null)"
+       +"\n  setVisible(true)"
+       +"\n  setDefaulsCloseOperation(EXIT_ON_CLOSE)"       
+       +"\n"
+       ;
+      String r = s1+add+s2;
+      ventana.setText(r);
+      i=l;
+     }
+    }
+   }
+  }
+ } 
  private void claseMain(){
   String clase = ventana.getText();
   //clase.buscar("//Constructor");
