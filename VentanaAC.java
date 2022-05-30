@@ -7,10 +7,13 @@ public class VentanaAC implements ActionListener{
  JTextArea ventana; //Donde se va a mostrar
  JTextField nombre; //Donde pone el nombre de la clase
  JCheckBox isMain; //verifica si tiene clase main
+ JCheckBox configCB;//CheckBox configuracion de la ventana
  public void actionPerformed(ActionEvent e){
   if(nombre.getText().strip().equals("")){
    crearClase();
-   startConfig();
+   if(configCB.isSelected()){
+    startConfig();
+   }
    if(isMain.isSelected()){
     claseMain();
    }
@@ -18,16 +21,19 @@ public class VentanaAC implements ActionListener{
   else{
    String n = nombre.getText().strip();
    crearClase(n);
-   startConfig();
+   if(configCB.isSelected()){
+    startConfig();
+   }
    if(isMain.isSelected()){
     claseMain();
    }
   }    
  }
- public VentanaAC(JTextArea ta, JTextField tf, JCheckBox cb){
+ public VentanaAC(JTextArea ta, JTextField tf, JCheckBox cbMain, JCheckBox cbConfig){
   ventana = ta;
   nombre = tf;
-  isMain = cb;
+  isMain = cbMain;
+  configCB = cbConfig;
  }
  private void crearClase(String nombre){
   ventana.setText("public class "+nombre+" extends JFrame{"

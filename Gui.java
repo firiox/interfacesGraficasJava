@@ -11,6 +11,7 @@ public class Gui extends JFrame{
  JTextArea areaTexto1;
  JTextField nombre;
  JCheckBox isMain;
+ JCheckBox configCB;
  public Gui(){
   setLayout(null);
   //Ventanas
@@ -25,10 +26,13 @@ public class Gui extends JFrame{
   nombre.setBounds(200,40,100,22);
   add(nombre);
   isMain = new JCheckBox("main");
-  isMain.setBounds(340,40,100,22);
+  isMain.setBounds(340,40,70,22);
   add(isMain);
+  configCB = new JCheckBox("config");
+  configCB.setBounds(410,40,70,22);
+  add(configCB);
   //Eventos
-  boton1.addActionListener(new VentanaAC(areaTexto1,nombre,isMain));
+  boton1.addActionListener(new VentanaAC(areaTexto1,nombre,isMain,configCB));
   //config
   this.setVisible(true);
   this.setBounds(0,0,600,400);
