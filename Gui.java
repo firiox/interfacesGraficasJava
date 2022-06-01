@@ -6,12 +6,14 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
 public class Gui extends JFrame{
  JButton boton1;
  JTextArea areaTexto1;
  JTextField nombre;
  JCheckBox isMain;
  JCheckBox configCB;
+ JTextField dimensionTF;
  public Gui(){
   setLayout(null);
   //Ventanas
@@ -31,8 +33,14 @@ public class Gui extends JFrame{
   configCB = new JCheckBox("config");
   configCB.setBounds(410,40,70,22);
   add(configCB);
+  dimensionTF = new JTextField();
+  dimensionTF.setBounds(410,85,100,22);
+  dimensionTF.setVisible(false);
+  add(dimensionTF);
   //Eventos
-  boton1.addActionListener(new VentanaAC(areaTexto1,nombre,isMain,configCB));
+  ActionListener ac = new VentanaAC(areaTexto1,nombre,isMain,configCB,dimensionTF);
+  boton1.addActionListener(ac);
+  configCB.addActionListener(ac);
   //config
   this.setVisible(true);
   this.setBounds(0,0,600,400);
