@@ -38,7 +38,7 @@ public class Gui extends JFrame{
   dimensionTF.setVisible(false);
   add(dimensionTF);
   //Eventos
-  ActionListener ac = new VentanaAC(areaTexto1,nombre,isMain,configCB,dimensionTF);
+  ActionListener ac = new VentanaAC(boton1,areaTexto1,nombre,isMain,configCB,dimensionTF);
   boton1.addActionListener(ac);
   configCB.addActionListener(ac);
   //config

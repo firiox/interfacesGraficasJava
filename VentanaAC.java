@@ -3,7 +3,9 @@ import javax.swing.JTextArea;
 import java.lang.String;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JButton;
 public class VentanaAC implements ActionListener{
+ JButton botonCrear;
  JTextArea ventana; //Donde se va a mostrar
  JTextField nombre; //Donde pone el nombre de la clase
  JCheckBox isMain; //verifica si tiene clase main
@@ -18,27 +20,30 @@ public class VentanaAC implements ActionListener{
     dimensionTF.setVisible(false);
    }
   }
-  if(nombre.getText().strip().equals("")){
-   crearClase();
-   if(configCB.isSelected()){
-    startConfig(); 
+  if(e.getSource()==botonCrear){
+   if(nombre.getText().strip().equals("")){
+    crearClase();
+    if(configCB.isSelected()){
+     startConfig(); 
+    }
+    if(isMain.isSelected()){
+     claseMain();
+    }
    }
-   if(isMain.isSelected()){
-    claseMain();
-   }
+   else{
+    String n = nombre.getText().strip();
+    crearClase(n);
+    if(configCB.isSelected()){
+     startConfig();
+    }
+    if(isMain.isSelected()){
+     claseMain();
+    }
+   }    
   }
-  else{
-   String n = nombre.getText().strip();
-   crearClase(n);
-   if(configCB.isSelected()){
-    startConfig();
-   }
-   if(isMain.isSelected()){
-    claseMain();
-   }
-  }    
  }
- public VentanaAC(JTextArea ta, JTextField tf, JCheckBox cbMain, JCheckBox cbConfig, JTextField tfDimension){
+ public VentanaAC(JButton crearB, JTextArea ta, JTextField tf, JCheckBox cbMain, JCheckBox cbConfig, JTextField tfDimension){
+  botonCrear = crearB;
   ventana = ta;
   nombre = tf;
   isMain = cbMain;
