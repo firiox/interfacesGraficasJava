@@ -91,7 +91,7 @@ public class VentanaAC implements ActionListener{
        ""//"\n  setBounds(0,0,600,400)"
        +"\n  setLocationRelativeTo(null)"
        +"\n  setVisible(true)"
-       +"\n  setDefaulsCloseOperation(EXIT_ON_CLOSE)"       
+       +"\n  setDefaultCloseOperation(EXIT_ON_CLOSE)"       
        +"\n"
        ;
       String r = s1+add+s2;
